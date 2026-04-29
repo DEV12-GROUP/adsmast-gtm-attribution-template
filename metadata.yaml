@@ -1,3 +1,5 @@
 homepage: "https://adsmast.com"
 documentation: "https://github.com/DEV12-GROUP/adsmast-gtm-attribution-template/blob/main/README.md"
-versions: []
+versions:
+  - sha: "c31c0c0cc09a414cd6384eb1f3fd359d76818f6d"
+    changeNotes: "Initial release."
