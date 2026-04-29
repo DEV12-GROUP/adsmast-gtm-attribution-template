@@ -1,0 +1,19 @@
+name: Lint
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          for s in TERMS_OF_SERVICE INFO TEMPLATE_PARAMETERS SANDBOXED_JS_FOR_WEB_TEMPLATE WEB_PERMISSIONS TESTS NOTES; do
+            grep -q "^___${s}___\$" template.tpl || { echo "Missing section ___${s}___"; exit 1; }
+          done
+      - run: |
+          grep -q '^  - sha:' metadata.yaml
+          grep -q '    changeNotes:' metadata.yaml
+      - run: test -f LICENSE
